@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { signInUser } from '../services/user';
 
 export default function Login() {
   const [authType, setAuthType] = useState('Sign In');
@@ -9,13 +10,19 @@ export default function Login() {
     setAuthType(type);
   };
 
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+
+    const user = await signInUser({ email, password });
+  };
+
   return (
     <>
       <div>
         <h2 onClick={() => handleSetAuthType('Sign In')}>Sign In</h2>
         <h2 onClick={() => handleSetAuthType('Sign Up')}>Sign Up</h2>
       </div>
-      <form>
+      <form onSubmit={handleLoginSubmit}>
         <label htmlFor="email">Email</label>
         <input
           id="email"
