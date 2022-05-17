@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { signInUser } from '../services/user';
+import { signInUser, signUpUser } from '../services/user';
 
 export default function Login() {
   const [authType, setAuthType] = useState('Sign In');
@@ -12,8 +12,13 @@ export default function Login() {
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-
-    const user = await signInUser({ email, password });
+    if (authType === 'Sign In') {
+      const user = await signInUser({ email, password });
+      console.log(user);
+    } else {
+      const user = await signUpUser({ email, password });
+      console.log(user);
+    }
   };
 
   return (
