@@ -10,6 +10,7 @@ export default function Header() {
 
   const handleSignOut = async () => {
     await signOut();
+    history.replace('/login');
   };
 
   const handleLoginRedirect = () => {

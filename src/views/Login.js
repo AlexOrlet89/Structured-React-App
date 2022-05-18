@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useUserContext } from '../context/UserContext';
 import { signInUser, signUpUser } from '../services/fetchUser';
+import { useHistory } from 'react-router-dom';
 
 export default function Login() {
   const { setUser, user, signIn, signUp } = useUserContext();
   const [authType, setAuthType] = useState('Sign In');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const history = useHistory();
 
   const handleSetAuthType = (type) => {
     setAuthType(type);
@@ -17,6 +19,7 @@ export default function Login() {
     if (authType === 'Sign In') {
       const user = await signIn(email, password);
       setUser(user);
+      history.replace('/profile');
 
       // Might do a windows alert, if not one of those toasts, so leaving this user here open...
       //   const user = await signInUser({ email, password });
