@@ -16,6 +16,7 @@ export default function Login() {
     e.preventDefault();
     if (authType === 'Sign In') {
       const user = await signIn(email, password);
+      // Might do a windows alert, if not one of those toasts, so leaving this user here open...
       //   const user = await signInUser({ email, password });
       //   console.log(user);
     } else {

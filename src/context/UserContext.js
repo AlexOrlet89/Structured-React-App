@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from 'react';
-import { getUser, signInUser, signUpUser } from '../services/user';
+import { useHistory } from 'react-router-dom';
+import { getUser, signInUser, signOutUser, signUpUser } from '../services/user';
 
 export const UserContext = createContext();
 
@@ -26,9 +27,13 @@ export const UserProvider = ({ children }) => {
     setUser(user);
     console.log(user);
   };
+  const signOut = async () => {
+    console.log('sign out?');
+    signOutUser();
+  };
 
   return (
-    <UserContext.Provider value={{ user, signIn, signUp }}>
+    <UserContext.Provider value={{ user, signIn, signUp, signOut }}>
       {children}
     </UserContext.Provider>
   );
