@@ -7,3 +7,7 @@ I've been spending my lunch breaks on long walks around the neighborhood and cal
 lil easy wins here, Lets steal some Auth functions from a previous job, try to get a sign in sign up page that redirects us to a home page, then we can work in a private route, then we'll worry about contacts.
 
 Adding functions and user to userContext first, making a header and proving the header can display the user.
+
+The Demo uses useEffect through a profile, which I'm used to using useEffect on the user. jesus that's a lot of u's. This is starting to get confusing, why was this so easy last week.
+
+I think we will create Profile in UserContext

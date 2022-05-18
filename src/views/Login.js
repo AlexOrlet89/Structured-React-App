@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useUserContext } from '../context/UserContext';
-import { signInUser, signUpUser } from '../services/user';
+import { signInUser, signUpUser } from '../services/fetchUser';
 
 export default function Login() {
-  const { user, signIn, signUp } = useUserContext();
+  const { setUser, user, signIn, signUp } = useUserContext();
   const [authType, setAuthType] = useState('Sign In');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,6 +16,8 @@ export default function Login() {
     e.preventDefault();
     if (authType === 'Sign In') {
       const user = await signIn(email, password);
+      setUser(user);
+
       // Might do a windows alert, if not one of those toasts, so leaving this user here open...
       //   const user = await signInUser({ email, password });
       //   console.log(user);
