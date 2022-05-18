@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useUserContext } from '../context/UserContext';
 import { signInUser, signUpUser } from '../services/user';
 
 export default function Login() {
+  const { user, signIn, signUp } = useUserContext();
   const [authType, setAuthType] = useState('Sign In');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,11 +15,13 @@ export default function Login() {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     if (authType === 'Sign In') {
-      const user = await signInUser({ email, password });
-      console.log(user);
+      const user = await signIn(email, password);
+      //   const user = await signInUser({ email, password });
+      //   console.log(user);
     } else {
-      const user = await signUpUser({ email, password });
-      console.log(user);
+      const user = await signUp(email, password);
+      //   const user = await signUpUser({ email, password });
+      //   console.log(user);
     }
   };
 
