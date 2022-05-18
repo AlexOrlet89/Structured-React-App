@@ -5,6 +5,7 @@ import Header from './views/Header';
 import Home from './views/Home';
 import Login from './views/Login';
 import Profile from './views/Profile';
+import PrivateRoute from './components/PrivateRoute';
 
 export default function App() {
   return (
@@ -18,9 +19,9 @@ export default function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/profile">
+          <PrivateRoute path="/profile">
             <Profile />
-          </Route>
+          </PrivateRoute>
         </Switch>
       </BrowserRouter>
     </>
