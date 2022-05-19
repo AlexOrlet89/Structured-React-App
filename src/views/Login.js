@@ -26,6 +26,9 @@ export default function Login() {
       //   console.log(user);
     } else {
       const user = await signUp(email, password);
+      // window.alert(`welcome ${user.email}`);
+      setUser(user);
+      history.replace('/profile');
       //   const user = await signUpUser({ email, password });
       //   console.log(user);
     }
