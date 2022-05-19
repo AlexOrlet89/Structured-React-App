@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from 'react';
 import { createContact, fetchContacts } from '../services/contacts';
 
 export const ContactContext = createContext();
@@ -12,16 +18,27 @@ export const useContactContext = () => {
   return context;
 };
 
+const contactReducer = (state, action) => {
+  switch (action.type) {
+    case 'LOAD_CONTACTS':
+      console.log(action.payload);
+      return action.payload;
+  }
+};
+
 export const ContactProvider = ({ children }) => {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, dispatch] = useReducer(contactReducer);
+  // const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchContacts();
-      setContacts(data);
+      const payload = await fetchContacts();
+      dispatch({ type: 'LOAD_CONTACTS', payload });
     };
     fetchData();
   }, []);
+
+  console.log(contacts);
 
   const addContact = async (name) => {
     console.log(name);
@@ -31,7 +48,7 @@ export const ContactProvider = ({ children }) => {
   };
 
   return (
-    <ContactContext.Provider value={{ addContact, contacts, setContacts }}>
+    <ContactContext.Provider value={{ addContact, contacts }}>
       {children}
     </ContactContext.Provider>
   );

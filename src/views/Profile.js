@@ -11,7 +11,8 @@ export default function Profile() {
     addContact(name);
   };
 
-  // console.log(contacts);
+  console.log(contacts);
+  if (!contacts) return null;
 
   return (
     <>
