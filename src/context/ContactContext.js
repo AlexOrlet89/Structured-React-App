@@ -23,6 +23,9 @@ const contactReducer = (state, action) => {
     case 'LOAD_CONTACTS':
       console.log(action.payload);
       return action.payload;
+    case 'ADD_CONTACT':
+      console.log('add_contact', action.payload);
+      return [action.payload.data, ...state];
   }
 };
 
@@ -30,25 +33,16 @@ export const ContactProvider = ({ children }) => {
   const [contacts, dispatch] = useReducer(contactReducer);
   // const [contacts, setContacts] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const payload = await fetchContacts();
-      dispatch({ type: 'LOAD_CONTACTS', payload });
-    };
-    fetchData();
-  }, []);
-
-  console.log(contacts);
-
-  const addContact = async (name) => {
-    console.log(name);
-    const data = await createContact(name);
-    console.log(data);
-    return data;
+  const addContact = (data) => {
+    dispatch({ type: 'ADD_CONTACT', payload: { data } });
+    // console.log(name);
+    // const data = await createContact(name);
+    // console.log(data);
+    // return data;
   };
 
   return (
-    <ContactContext.Provider value={{ addContact, contacts }}>
+    <ContactContext.Provider value={{ addContact, contacts, dispatch }}>
       {children}
     </ContactContext.Provider>
   );

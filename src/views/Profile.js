@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import { useContactContext } from '../context/ContactContext';
+import { createContact } from '../services/contacts';
 
 export default function Profile() {
   const { contacts, addContact } = useContactContext();
   const [name, setName] = useState('');
 
-  const formSubmitter = (e) => {
+  const formSubmitter = async (e) => {
     e.preventDefault();
     console.log('form submit', name);
-    addContact(name);
+    const data = await createContact(name); //to add a row in supabase
+    // console.log(data); gives us
+    addContact(data); //to update render of contacts
   };
 
-  console.log(contacts);
+  // console.log(contacts);
   if (!contacts) return null;
 
   return (
