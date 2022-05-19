@@ -23,8 +23,10 @@ export const ContactProvider = ({ children }) => {
     fetchData();
   }, []);
 
-  const addContact = async ({ name, lastContacted, birthday, note }) => {
-    const data = await createContact({ name, lastContacted, birthday, note });
+  const addContact = async (name) => {
+    console.log(name);
+    const data = await createContact(name);
+    console.log(data);
     return data;
   };
 

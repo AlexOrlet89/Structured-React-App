@@ -7,10 +7,11 @@ export default function Profile() {
 
   const formSubmitter = (e) => {
     e.preventDefault();
+    console.log('form submit', name);
     addContact(name);
   };
 
-  console.log(contacts);
+  // console.log(contacts);
 
   return (
     <>
@@ -23,6 +24,7 @@ export default function Profile() {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
+        <button>Submit</button>
       </form>
       <div>
         {contacts.map((contact) => (

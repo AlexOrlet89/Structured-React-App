@@ -20,7 +20,9 @@ export const useUserContext = () => {
 
 export const UserProvider = ({ children }) => {
   const currentUser = getUser();
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(
+    currentUser ? { id: currentUser.id, email: currentUser.email } : null
+  );
   // currentUser ? { id: currentUser.id, email: currentUser.email } : {}
 
   const signIn = async (email, password) => {
