@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import PostItem from '../components/PostItem';
 import { useContactContext } from '../context/ContactContext';
 
 export default function Home() {
@@ -11,7 +13,10 @@ export default function Home() {
       <div>Home</div>
       <div>
         {contacts.map((contact, i) => (
-          <p key={i}>{contact.name}</p>
+          <Link to={`/contact/${contact.id}`}>
+            <PostItem key={i} contact={contact} />
+            {/* // <p key={i}>{contact.name}</p> */}
+          </Link>
         ))}
       </div>
     </>
