@@ -9,7 +9,6 @@ export default function Profile() {
   const formSubmitter = async (e) => {
     e.preventDefault();
     console.log('form submit', name);
-    const data = await createContact(name); //to add a row in supabase
     // console.log(data); gives us
     addContact(data); //to update render of contacts
   };

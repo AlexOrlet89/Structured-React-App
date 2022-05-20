@@ -33,16 +33,13 @@ export const ContactProvider = ({ children }) => {
   const [contacts, dispatch] = useReducer(contactReducer);
   // const [contacts, setContacts] = useState([]);
 
-  const addContact = (data) => {
-    dispatch({ type: 'ADD_CONTACT', payload: { data } });
-    // console.log(name);
-    // const data = await createContact(name);
-    // console.log(data);
-    // return data;
-  };
+  // console.log(name);
+  // const data = await createContact(name);
+  // console.log(data);
+  // return data;
 
   return (
-    <ContactContext.Provider value={{ addContact, contacts, dispatch }}>
+    <ContactContext.Provider value={{ contacts, dispatch }}>
       {children}
     </ContactContext.Provider>
   );

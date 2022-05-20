@@ -13,10 +13,18 @@ export function useContacts() {
   const { contacts, dispatch } = context;
 
   useEffect(() => {
+    if (contacts) return;
+
     const fetchData = async () => {
       const payload = await fetchContacts();
       dispatch({ type: 'LOAD_CONTACTS', payload });
     };
     fetchData();
   }, []);
+
+  const addContact = async (contact) => {
+    const payload = await createContact(contact); //to add a row in supabase
+    dispatch({ type: 'ADD_CONTACT', payload });
+    return payload;
+  };
 }
