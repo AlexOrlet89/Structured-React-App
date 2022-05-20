@@ -17,6 +17,24 @@ export default function Profile() {
   // console.log(contacts);
   if (!contacts) return null;
 
+  let content;
+
+  if (!contacts) {
+    content = (
+      <div>
+        <p>You have no contacts yet</p>;
+      </div>
+    );
+  } else {
+    content = (
+      <div>
+        {contacts.map((contact, i) => (
+          <p key={i}>{contact.name}</p>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <>
       <div>Profile</div>
@@ -30,11 +48,7 @@ export default function Profile() {
         />
         <button>Submit</button>
       </form>
-      <div>
-        {contacts.map((contact, i) => (
-          <p key={i}>{contact.name}</p>
-        ))}
-      </div>
+      {content}
     </>
   );
 }

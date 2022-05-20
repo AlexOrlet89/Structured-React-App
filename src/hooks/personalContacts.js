@@ -7,6 +7,7 @@ export function personalContacts() {
   const { user } = useUserContext();
 
   if (!contacts) return null;
+  if (!user) return null;
   console.log(contacts);
 
   const userContacts = contacts.filter(
