@@ -13,4 +13,5 @@ export function personalContacts() {
     (contact) => contact.email == user.email
   );
   console.log('userContacts', userContacts);
+  return userContacts;
 }

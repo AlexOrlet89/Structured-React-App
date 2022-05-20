@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useContactContext } from '../context/ContactContext';
+import { personalContacts } from '../hooks/personalContacts';
 import { createContact } from '../services/contacts';
 
 export default function Profile() {
-  const { contacts, addContact } = useContactContext();
+  // const { contacts, addContact } = useContactContext();
   const [name, setName] = useState('');
+  const contacts = personalContacts();
 
   const formSubmitter = async (e) => {
     e.preventDefault();

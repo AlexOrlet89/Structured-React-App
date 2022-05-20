@@ -23,6 +23,7 @@ export default function Header() {
       <div>
         <h2>Header for {user ? user.email : `Unregistered Guest`}</h2>
         <Link to="/profile">Your Profile</Link>
+        <Link to="/">HOME</Link>
         {'   '}
         {user ? (
           <button onClick={handleSignOut}>Log Out</button>
