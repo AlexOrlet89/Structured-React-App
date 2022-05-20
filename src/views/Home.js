@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PostItem from '../components/PostItem';
+import PostItem from './PostDetail';
 import { useContactContext } from '../context/ContactContext';
 
 export default function Home() {

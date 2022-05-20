@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useUserContext } from '../context/UserContext';
-import { personalContacts } from '../hooks/personalContacts';
+import { personalContacts } from '../hooks/personalContacts/personalContacts';
 
 export default function Header() {
   const history = useHistory();

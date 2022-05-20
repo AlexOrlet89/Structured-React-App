@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import ContactForm from '../components/ContactForm';
 import { useContactContext } from '../context/ContactContext';
-import { personalContacts } from '../hooks/personalContacts';
+import { personalContacts } from '../hooks/personalContacts/personalContacts';
 import { createContact } from '../services/contacts';
 
 export default function Profile() {
@@ -27,8 +28,10 @@ export default function Profile() {
   } else {
     content = (
       <div>
-        {contacts.map((contact, i) => (
-          <p key={i}>{contact.name}</p>
+        {contacts.map((contact) => (
+          <Link key={contact.id} to={`/contact/${contact.id}`}>
+            <h2>{contact.name}</h2>
+          </Link>
         ))}
       </div>
     );

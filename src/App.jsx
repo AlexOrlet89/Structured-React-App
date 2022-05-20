@@ -6,7 +6,7 @@ import Home from './views/Home';
 import Login from './views/Login';
 import Profile from './views/Profile';
 import PrivateRoute from './components/PrivateRoute';
-import PostItem from './components/PostItem';
+import PostItem from './views/PostDetail';
 
 export default function App() {
   return (
