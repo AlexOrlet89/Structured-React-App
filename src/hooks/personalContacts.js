@@ -8,11 +8,9 @@ export function personalContacts() {
 
   if (!contacts) return null;
   if (!user) return null;
-  console.log(contacts);
 
   const userContacts = contacts.filter(
     (contact) => contact.email == user.email
   );
-  console.log('userContacts', userContacts);
   return userContacts;
 }

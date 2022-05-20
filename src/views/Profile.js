@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ContactForm from '../components/ContactForm';
 import { useContactContext } from '../context/ContactContext';
 import { personalContacts } from '../hooks/personalContacts';
 import { createContact } from '../services/contacts';
@@ -8,13 +9,11 @@ export default function Profile() {
   const [name, setName] = useState('');
   const contacts = personalContacts();
 
-  const formSubmitter = async (e) => {
-    e.preventDefault();
-    console.log('form submit', name);
-    addContact(name); //to update render of contacts
-  };
+  // const formSubmitter = async (e) => {
+  //   e.preventDefault();
+  //   addContact(name); //to update render of contacts
+  // };
 
-  // console.log(contacts);
   if (!contacts) return null;
 
   let content;
@@ -38,7 +37,8 @@ export default function Profile() {
   return (
     <>
       <div>Profile</div>
-      <form onSubmit={formSubmitter}>
+      <ContactForm />
+      {/* <form onSubmit={formSubmitter}>
         <label>Name:</label>
         <input
           type="text"
@@ -47,7 +47,7 @@ export default function Profile() {
           onChange={(e) => setName(e.target.value)}
         />
         <button>Submit</button>
-      </form>
+      </form> */}
       {content}
     </>
   );

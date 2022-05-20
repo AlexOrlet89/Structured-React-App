@@ -7,7 +7,6 @@ import { personalContacts } from '../hooks/personalContacts';
 export default function Header() {
   const history = useHistory();
   const { user, signOut } = useUserContext();
-  console.log('user', user);
   personalContacts();
 
   const handleSignOut = async () => {

@@ -6,6 +6,7 @@ import {
   useState,
 } from 'react';
 import { createContact, fetchContacts } from '../services/contacts';
+import { useUserContext } from './UserContext';
 
 export const ContactContext = createContext();
 
@@ -21,20 +22,21 @@ export const useContactContext = () => {
 const contactReducer = (state, action) => {
   switch (action.type) {
     case 'LOAD_CONTACTS':
-      console.log(action.payload);
       return action.payload;
     case 'ADD_CONTACT':
-      // console.log('add_contact', action.payload);
-      // console.log('add_contact', state);
       return [action.payload, ...state];
   }
 };
 
 export const ContactProvider = ({ children }) => {
   const [contacts, dispatch] = useReducer(contactReducer);
+  const { user } = useUserContext();
 
   const addContact = async (contact) => {
-    const payload = await createContact(contact); //to add a row in supabase
+    const payload = await createContact({
+      name: contact,
+      email: user.email,
+    }); //to add a row in supabase
     dispatch({ type: 'ADD_CONTACT', payload });
   };
 

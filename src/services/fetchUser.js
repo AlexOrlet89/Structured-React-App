@@ -23,7 +23,6 @@ export async function signInUser({ email, password }) {
 }
 
 export async function signOutUser() {
-  console.log('user function called');
   const x = await client.auth.signOut();
   return x;
 }

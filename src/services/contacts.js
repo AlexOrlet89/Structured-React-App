@@ -5,10 +5,10 @@ export async function fetchContacts() {
   return checkError(request);
 }
 
-export async function createContact(name, lastContacted, birthday, note) {
+export async function createContact({ name, email }) {
   const request = await client
     .from('contacts')
-    .insert([{ name, lastContacted, birthday, note }])
+    .insert({ name, email })
     .single();
   return checkError(request);
 }

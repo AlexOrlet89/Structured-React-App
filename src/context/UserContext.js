@@ -27,7 +27,6 @@ export const UserProvider = ({ children }) => {
 
   const signIn = async (email, password) => {
     const user = await signInUser({ email, password });
-    console.log(user);
     return user;
   };
 
@@ -36,7 +35,6 @@ export const UserProvider = ({ children }) => {
     return user;
   };
   const signOut = async () => {
-    console.log('sign out?');
     await signOutUser();
     setUser(null);
   };
