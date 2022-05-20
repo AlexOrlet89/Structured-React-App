@@ -4,10 +4,11 @@ import { useContactContext } from '../context/ContactContext';
 export default function ContactForm() {
   const { addContact } = useContactContext();
   const [name, setName] = useState('');
+  const [note, setNote] = useState('');
 
   const formSubmitter = async (e) => {
     e.preventDefault();
-    addContact(name); //to update render of contacts
+    addContact(name, note); //to update render of contacts
   };
 
   return (
@@ -20,6 +21,13 @@ export default function ContactForm() {
           name="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+        />
+        <br></br>
+        <label>Note:</label>
+        <textarea
+          name="note"
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
         />
         <button>Submit</button>
       </form>

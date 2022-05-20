@@ -5,10 +5,11 @@ export async function fetchContacts() {
   return checkError(request);
 }
 
-export async function createContact({ name, email }) {
+export async function createContact({ name, note, email }) {
+  // console.log('fetch call note', note); works!!
   const request = await client
     .from('contacts')
-    .insert({ name, email })
+    .insert({ name, note, email })
     .single();
   return checkError(request);
 }
