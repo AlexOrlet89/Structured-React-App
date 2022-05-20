@@ -8,6 +8,7 @@ export async function fetchContacts() {
 export async function createContact(name, lastContacted, birthday, note) {
   const request = await client
     .from('contacts')
-    .insert([{ name, lastContacted, birthday, note }]);
+    .insert([{ name, lastContacted, birthday, note }])
+    .single();
   return checkError(request);
 }

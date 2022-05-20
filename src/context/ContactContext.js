@@ -24,22 +24,32 @@ const contactReducer = (state, action) => {
       console.log(action.payload);
       return action.payload;
     case 'ADD_CONTACT':
-      console.log('add_contact', action.payload);
-      return [action.payload.data, ...state];
+      // console.log('add_contact', action.payload);
+      // console.log('add_contact', state);
+      return [action.payload, ...state];
   }
 };
 
 export const ContactProvider = ({ children }) => {
   const [contacts, dispatch] = useReducer(contactReducer);
-  // const [contacts, setContacts] = useState([]);
 
-  // console.log(name);
-  // const data = await createContact(name);
-  // console.log(data);
-  // return data;
+  const addContact = async (contact) => {
+    const payload = await createContact(contact); //to add a row in supabase
+    dispatch({ type: 'ADD_CONTACT', payload });
+  };
+
+  useEffect(() => {
+    if (contacts) return;
+
+    const fetchData = async () => {
+      const payload = await fetchContacts();
+      dispatch({ type: 'LOAD_CONTACTS', payload });
+    };
+    fetchData();
+  }, []);
 
   return (
-    <ContactContext.Provider value={{ contacts, dispatch }}>
+    <ContactContext.Provider value={{ contacts, addContact }}>
       {children}
     </ContactContext.Provider>
   );

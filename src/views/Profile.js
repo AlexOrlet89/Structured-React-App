@@ -9,8 +9,7 @@ export default function Profile() {
   const formSubmitter = async (e) => {
     e.preventDefault();
     console.log('form submit', name);
-    // console.log(data); gives us
-    addContact(data); //to update render of contacts
+    addContact(name); //to update render of contacts
   };
 
   // console.log(contacts);
@@ -30,8 +29,8 @@ export default function Profile() {
         <button>Submit</button>
       </form>
       <div>
-        {contacts.map((contact) => (
-          <p key={contact.created_at}>{contact.name}</p>
+        {contacts.map((contact, i) => (
+          <p key={i}>{contact.name}</p>
         ))}
       </div>
     </>
