@@ -1,14 +1,17 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { viewContact } from '../hooks/personalContacts';
 
 export default function PostItem() {
   const { id } = useParams();
-  //   if (!contact) return null;
+  const contact = viewContact(id);
+  console.log(contact);
 
-  //   console.log(contact);
+  if (!contact) return <p>loading...</p>;
+
   return (
     <>
-      <h2>post!!!</h2>
+      <h2>{contact.name}</h2>
     </>
   );
 }

@@ -15,10 +15,11 @@ export async function createContact({ name, note, email }) {
 }
 
 export async function fetchContactById(id) {
+  console.log('fetch called', id);
   const request = await client
-    .from('clients')
+    .from('contacts')
     .select('*')
-    .match({ id: id })
+    .match({ id })
     .single();
   return checkError(request);
 }
