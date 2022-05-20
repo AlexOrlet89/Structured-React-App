@@ -6,6 +6,7 @@ import Home from './views/Home';
 import Login from './views/Login';
 import Profile from './views/Profile';
 import PrivateRoute from './components/PrivateRoute';
+import PostItem from './components/PostItem';
 
 export default function App() {
   return (
@@ -15,6 +16,9 @@ export default function App() {
         <Switch>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route exact path="/contact/:id">
+            <PostItem />
           </Route>
           <Route path="/login">
             <Login />

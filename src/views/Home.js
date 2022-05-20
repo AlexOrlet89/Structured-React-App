@@ -13,9 +13,8 @@ export default function Home() {
       <div>Home</div>
       <div>
         {contacts.map((contact, i) => (
-          <Link to={`/contact/${contact.id}`}>
-            <PostItem key={i} contact={contact} />
-            {/* // <p key={i}>{contact.name}</p> */}
+          <Link key={contact.id} to={`/contact/${contact.id}`}>
+            <h2>{contact.name}</h2>
           </Link>
         ))}
       </div>

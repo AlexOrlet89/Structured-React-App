@@ -13,3 +13,12 @@ export async function createContact({ name, note, email }) {
     .single();
   return checkError(request);
 }
+
+export async function fetchContactById(id) {
+  const request = await client
+    .from('clients')
+    .select('*')
+    .match({ id: id })
+    .single();
+  return checkError(request);
+}
