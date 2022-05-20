@@ -2,11 +2,13 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useUserContext } from '../context/UserContext';
+import { personalContacts } from '../hooks/personalContacts';
 
 export default function Header() {
   const history = useHistory();
   const { user, signOut } = useUserContext();
-  console.log(user);
+  console.log('user', user);
+  personalContacts();
 
   const handleSignOut = async () => {
     await signOut();
