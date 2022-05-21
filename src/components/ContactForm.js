@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
 import { useContactContext } from '../context/ContactContext';
+import { viewContact } from '../hooks/personalContacts/personalContacts';
+import { fetchContactById } from '../services/contacts';
 
-export default function ContactForm() {
+export default function ContactForm(id) {
   const { addContact } = useContactContext();
   const [name, setName] = useState('');
   const [note, setNote] = useState('');
+
+  if (id) {
+    async () => {
+      const contact = await fetchContactById(id);
+      setName(contact.name);
+    };
+  }
 
   const formSubmitter = async (e) => {
     e.preventDefault();

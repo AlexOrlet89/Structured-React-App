@@ -7,6 +7,7 @@ import Login from './views/Login';
 import Profile from './views/Profile';
 import PrivateRoute from './components/PrivateRoute';
 import PostItem from './views/PostDetail';
+import EditPage from './views/EditPage';
 
 export default function App() {
   return (
@@ -25,6 +26,9 @@ export default function App() {
           </Route>
           <PrivateRoute path="/profile">
             <Profile />
+          </PrivateRoute>
+          <PrivateRoute path="/contact/:id/edit">
+            <EditPage />
           </PrivateRoute>
         </Switch>
       </BrowserRouter>

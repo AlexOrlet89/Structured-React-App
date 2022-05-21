@@ -41,16 +41,6 @@ export default function Profile() {
     <>
       <div>Profile</div>
       <ContactForm />
-      {/* <form onSubmit={formSubmitter}>
-        <label>Name:</label>
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <button>Submit</button>
-      </form> */}
       {content}
     </>
   );
