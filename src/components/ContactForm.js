@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useContactContext } from '../context/ContactContext';
-import { viewContact } from '../hooks/personalContacts/personalContacts';
+import { viewContact } from '../hooks/personalContacts';
 import { fetchContactById } from '../services/contacts';
 
 export default function ContactForm(id) {

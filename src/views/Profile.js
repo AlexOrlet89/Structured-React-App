@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ContactForm from '../components/ContactForm';
 import { useContactContext } from '../context/ContactContext';
-import { personalContacts } from '../hooks/personalContacts/personalContacts';
+import { personalContacts } from '../hooks/personalContacts';
 import { createContact } from '../services/contacts';
 
 export default function Profile() {

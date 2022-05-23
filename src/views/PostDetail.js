@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useUserContext } from '../context/UserContext';
-import { viewContact } from '../hooks/personalContacts/personalContacts';
+import { viewContact } from '../hooks/personalContacts';
 
 export default function PostItem() {
   const { id } = useParams();
