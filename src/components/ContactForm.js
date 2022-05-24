@@ -4,23 +4,18 @@ import { viewContact } from '../hooks/personalContacts';
 import { fetchContactById } from '../services/contacts';
 import { useForm } from '../hooks/useForm';
 
-export default function ContactForm(id) {
-  const { addContact } = useContactContext();
-  const [name, setName] = useState('');
-  const [note, setNote] = useState('');
+export default function ContactForm({ contact = {}, onSubmit }) {
+  // alright a couple things,
+  // const { addContact } = useContactContext();
+  const { name = '', note = '' } = contact;
+  // const [name, setName] = useState('');
+  // const [note, setNote] = useState('');
 
   const { formState, handleChange } = useForm({ name, note });
 
-  if (id) {
-    async () => {
-      const contact = await fetchContactById(id);
-      setName(contact.name);
-    };
-  }
-
   const formSubmitter = async (e) => {
     e.preventDefault();
-    addContact(name, note); //to update render of contacts
+    // addContact(name, note); //to update render of contacts
   };
 
   return (
