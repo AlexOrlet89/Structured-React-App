@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ContactForm from '../components/ContactForm';
+import ContactItem from '../components/ContactItem';
 import { useContactContext } from '../context/ContactContext';
 import { personalContacts } from '../hooks/personalContacts';
 import { createContact } from '../services/contacts';
@@ -9,10 +10,7 @@ export default function Profile() {
   const { addContact } = useContactContext();
   const contacts = personalContacts();
 
-  // const formSubmitter = async (e) => {
-  //   e.preventDefault();
-  //   addContact(name); //to update render of contacts
-  // };
+  //Profile should
 
   if (!contacts) return null;
 
@@ -28,9 +26,7 @@ export default function Profile() {
     content = (
       <div>
         {contacts.map((contact) => (
-          <Link key={contact.id} to={`/contact/${contact.id}`}>
-            <h2>{contact.name}</h2>
-          </Link>
+          <ContactItem key={contact.id} contact={contact} />
         ))}
       </div>
     );

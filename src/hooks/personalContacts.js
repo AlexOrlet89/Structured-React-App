@@ -8,6 +8,7 @@ import { fetchContactById } from '../services/contacts';
 export function personalContacts() {
   const { contacts } = useContactContext();
   const { user } = useUserContext();
+  console.log('this proves that personalContacts is being called');
 
   if (!contacts) return null;
   if (!user) return null;
