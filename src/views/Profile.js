@@ -26,14 +26,19 @@ export default function Profile() {
     content = (
       <div>
         {contacts.map((contact) => (
-          <ContactItem key={contact.id} contact={contact} />
+          <>
+            <ContactItem key={contact.id} contact={contact} />
+            <>
+              <button value={contact.id}>Edit</button>
+              <button value={contact.id}>Delete</button>
+            </>
+          </>
         ))}
       </div>
     );
   }
 
   const handleSubmit = async (contact) => {
-    console.log(contact);
     await addContact(contact);
   };
 

@@ -42,18 +42,18 @@ export const ContactProvider = ({ children }) => {
     dispatch({ type: 'ADD_CONTACT', payload });
   };
 
-  useEffect(() => {
-    if (contacts) return;
+  // useEffect(() => {
+  //   if (contacts) return;
 
-    const fetchData = async () => {
-      const payload = await fetchContacts();
-      dispatch({ type: 'LOAD_CONTACTS', payload });
-    };
-    fetchData();
-  }, []);
+  //   const fetchData = async () => {
+  //     const payload = await fetchContacts();
+  //     dispatch({ type: 'LOAD_CONTACTS', payload });
+  //   };
+  //   fetchData();
+  // }, []);
 
   return (
-    <ContactContext.Provider value={{ contacts, addContact }}>
+    <ContactContext.Provider value={{ contacts, dispatch }}>
       {children}
     </ContactContext.Provider>
   );

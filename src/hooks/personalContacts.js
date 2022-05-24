@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react';
 import { useContactContext } from '../context/ContactContext';
 import { useUserContext } from '../context/UserContext';
 import { fetchContactById } from '../services/contacts';
+import { useContacts } from './useContacts';
 
 // // this is a custom hook context file. this will be where we pass contacts and user id through and return only the user's contact info.
 export function personalContacts() {
-  const { contacts } = useContactContext();
+  const { contacts } = useContacts();
   const { user } = useUserContext();
-  console.log('this proves that personalContacts is being called');
 
   if (!contacts) return null;
   if (!user) return null;
