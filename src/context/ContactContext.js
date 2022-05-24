@@ -32,12 +32,13 @@ export const ContactProvider = ({ children }) => {
   const [contacts, dispatch] = useReducer(contactReducer);
   const { user } = useUserContext();
 
-  const addContact = async (name, note) => {
+  const addContact = async (contact) => {
     const payload = await createContact({
-      name,
-      note,
+      name: contact.name,
+      note: contact.note,
       email: user.email,
-    }); //to add a row in supabase
+    });
+    console.log(payload); //to add a row in supabase
     dispatch({ type: 'ADD_CONTACT', payload });
   };
 

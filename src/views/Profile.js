@@ -37,6 +37,7 @@ export default function Profile() {
   }
 
   const handleSubmit = async (contact) => {
+    console.log(contact);
     await addContact(contact);
   };
 
