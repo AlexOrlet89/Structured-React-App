@@ -15,6 +15,7 @@ export default function ContactForm({ contact = {}, onSubmit }) {
 
   const formSubmitter = async (e) => {
     e.preventDefault();
+    onSubmit(formState);
     // addContact(name, note); //to update render of contacts
   };
 

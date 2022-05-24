@@ -6,8 +6,7 @@ import { personalContacts } from '../hooks/personalContacts';
 import { createContact } from '../services/contacts';
 
 export default function Profile() {
-  // const { contacts, addContact } = useContactContext();
-  const [name, setName] = useState('');
+  const { addContact } = useContactContext();
   const contacts = personalContacts();
 
   // const formSubmitter = async (e) => {
@@ -37,10 +36,14 @@ export default function Profile() {
     );
   }
 
+  const handleSubmit = async (contact) => {
+    await addContact(contact);
+  };
+
   return (
     <>
       <div>Profile</div>
-      <ContactForm />
+      <ContactForm onSubmit={handleSubmit} />
       {content}
     </>
   );
