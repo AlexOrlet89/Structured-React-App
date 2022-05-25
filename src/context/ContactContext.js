@@ -25,10 +25,11 @@ const contactReducer = (state, action) => {
       return action.payload;
     case 'ADD_CONTACT':
       return [action.payload, ...state];
-    case 'DELETE_CONTACT':
-      // return state.filter((s) => s.id !== action.payload.id)
-      // return [...state];
-      return action.payload;
+    // case 'DELETE_CONTACT':
+
+    // return state.filter((s) => s.id !== action.payload.id);
+    // return [...state];
+    // return action.payload;
   }
 };
 

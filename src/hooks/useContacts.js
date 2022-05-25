@@ -12,14 +12,14 @@ export function useContacts() {
   const { dispatch, contacts } = useContactContext();
 
   useEffect(() => {
-    if (contacts) return;
+    // if (contacts) return;
 
     const fetchData = async () => {
       const payload = await fetchContacts();
       dispatch({ type: 'LOAD_CONTACTS', payload });
     };
     fetchData();
-  }, []);
+  }, [contacts]);
 
   const addContact = async (contact) => {
     const payload = await createContact({
