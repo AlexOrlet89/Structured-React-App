@@ -25,8 +25,6 @@ export async function fetchContactById(id) {
 }
 
 export async function deleteContact(id) {
-  console.log('DELETED!', typeof id);
   const request = await client.from('contacts').delete().match({ id }).single();
-  console.log(request);
-  return request;
+  return checkError(request);
 }

@@ -25,9 +25,10 @@ const contactReducer = (state, action) => {
       return action.payload;
     case 'ADD_CONTACT':
       return [action.payload, ...state];
-    // case 'DELETE_CONTACT':
+    case 'DELETE_CONTACT':
+      console.log(state, action.payload);
+      return state.filter((s) => s.id !== action.payload.id);
 
-    // return state.filter((s) => s.id !== action.payload.id);
     // return [...state];
     // return action.payload;
   }
@@ -35,6 +36,7 @@ const contactReducer = (state, action) => {
 
 export const ContactProvider = ({ children }) => {
   const [contacts, dispatch] = useReducer(contactReducer);
+  console.log(contacts);
   const { user } = useUserContext();
 
   // useEffect(() => {

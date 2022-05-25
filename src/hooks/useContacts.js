@@ -19,7 +19,7 @@ export function useContacts() {
       dispatch({ type: 'LOAD_CONTACTS', payload });
     };
     fetchData();
-  }, [contacts]);
+  }, []);
 
   const addContact = async (contact) => {
     const payload = await createContact({
@@ -34,7 +34,8 @@ export function useContacts() {
   const removeContact = async (id) => {
     const payload = await deleteContact(id);
     console.log(payload);
-    // dispatch({ type: 'DELETE_CONTACT', payload });
+    dispatch({ type: 'DELETE_CONTACT', payload });
+    // return payload;
   };
 
   return { addContact, contacts, removeContact };
