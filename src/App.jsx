@@ -1,3 +1,37 @@
+import { Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import Header from './views/Header';
+import Home from './views/Home';
+import Login from './views/Login';
+import Profile from './views/Profile';
+import PrivateRoute from './components/PrivateRoute';
+import PostItem from './views/PostDetail';
+import EditPage from './views/EditPage';
+
 export default function App() {
-  return <h1>Hello World</h1>;
+  return (
+    <>
+      <BrowserRouter>
+        <Header />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/contact/:id">
+            <PostItem />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <PrivateRoute path="/profile">
+            <Profile />
+          </PrivateRoute>
+          <PrivateRoute path="/contact/:id/edit">
+            <EditPage />
+          </PrivateRoute>
+        </Switch>
+      </BrowserRouter>
+    </>
+  );
 }
