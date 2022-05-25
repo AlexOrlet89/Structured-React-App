@@ -30,7 +30,6 @@ export default function PostItem() {
     <>
       <h2>{contact.name}</h2>
       <div>{buttons}</div>
-      <button>Copy</button>
     </>
   );
 }

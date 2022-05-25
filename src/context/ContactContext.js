@@ -36,7 +36,6 @@ const contactReducer = (state, action) => {
 
 export const ContactProvider = ({ children }) => {
   const [contacts, dispatch] = useReducer(contactReducer);
-  console.log(contacts);
   const { user } = useUserContext();
 
   // useEffect(() => {

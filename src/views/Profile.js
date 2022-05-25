@@ -5,13 +5,8 @@ import { personalContacts } from '../hooks/personalContacts';
 import { useContacts } from '../hooks/useContacts';
 
 export default function Profile() {
-  const { addContact, removeContact } = useContacts();
+  const { addContact } = useContacts();
   const contacts = personalContacts();
-
-  //Profile should
-  const handleDelete = async (id) => {
-    await removeContact(id);
-  };
 
   if (!contacts) return null;
 
@@ -29,15 +24,6 @@ export default function Profile() {
         {contacts.map((contact) => (
           <>
             <ContactItem key={contact.id} contact={contact} />
-            <>
-              <button value={contact.id}>Edit</button>
-              <button
-                value={contact.id}
-                onClick={() => handleDelete(contact.id)}
-              >
-                Delete
-              </button>
-            </>
           </>
         ))}
       </div>
