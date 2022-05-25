@@ -10,26 +10,16 @@ export default function PostItem() {
   const { id } = useParams();
   const { user } = useUserContext();
   const contact = viewContact(id);
-  const { removeContact } = useContacts();
   const history = useHistory();
 
   if (!contact) return <p>loading...</p>;
 
   const isUser = contact.email === user.email;
 
-  const handleDelete = async (id) => {
-    await removeContact(id);
-    history.goBack();
-  };
-
   return (
     <>
       <h2>{contact.name}</h2>
-      <ContactItemButtons
-        contact={contact}
-        isUser={isUser}
-        handleDelete={handleDelete}
-      />
+      <ContactItemButtons contact={contact} isUser={isUser} />
     </>
   );
 }
