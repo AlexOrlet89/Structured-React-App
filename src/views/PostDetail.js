@@ -9,11 +9,14 @@ export default function PostItem() {
   const { user } = useUserContext();
   const contact = viewContact(id);
   const history = useHistory();
+
+  if (!contact) return <p>loading...</p>;
+
+  const isUser = contact.email === user.email;
+
   console.log(contact);
 
   let buttons;
-
-  if (!contact) return <p>loading...</p>;
 
   if (user.email === contact.email) {
     buttons = (
