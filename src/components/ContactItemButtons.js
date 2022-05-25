@@ -1,13 +1,8 @@
 import React from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import { useContacts } from '../hooks/useContacts';
 
-export default function ContactItemButtons({ contact, isUser }) {
-  const { removeContact } = useContacts();
-
-  const handleDelete = async (id) => {
-    await removeContact(id);
-  };
-
+export default function ContactItemButtons({ contact, isUser, handleDelete }) {
   return (
     <div>
       {' '}
