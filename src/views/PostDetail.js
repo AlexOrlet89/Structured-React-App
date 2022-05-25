@@ -8,18 +8,15 @@ import { useContacts } from '../hooks/useContacts';
 
 export default function PostItem() {
   const { id } = useParams();
-  const { user } = useUserContext();
   const contact = viewContact(id);
   const history = useHistory();
 
   if (!contact) return <p>loading...</p>;
 
-  const isUser = contact.email === user.email;
-
   return (
     <>
       <h2>{contact.name}</h2>
-      <ContactItemButtons contact={contact} isUser={isUser} />
+      <ContactItemButtons contact={contact} />
     </>
   );
 }
