@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import ContactItemButtons from '../components/ContactItemButtons';
 import { useUserContext } from '../context/UserContext';
 import { viewContact } from '../hooks/personalContacts';
 
@@ -14,25 +15,10 @@ export default function PostItem() {
 
   const isUser = contact.email === user.email;
 
-  console.log(contact);
-
-  let buttons;
-
-  if (user.email === contact.email) {
-    buttons = (
-      <>
-        <button onClick={() => history.push(`/contact/${id}/edit`)}>
-          Edit
-        </button>
-        <button>Delete</button>
-      </>
-    );
-  }
-
   return (
     <>
       <h2>{contact.name}</h2>
-      <div>{buttons}</div>
+      <ContactItemButtons contact={contact} isUser={isUser} />
     </>
   );
 }
