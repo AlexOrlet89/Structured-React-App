@@ -25,22 +25,16 @@ const contactReducer = (state, action) => {
       return action.payload;
     case 'ADD_CONTACT':
       return [action.payload, ...state];
+    case 'DELETE_CONTACT':
+      // return state.filter((s) => s.id !== action.payload.id)
+      // return [...state];
+      return action.payload;
   }
 };
 
 export const ContactProvider = ({ children }) => {
   const [contacts, dispatch] = useReducer(contactReducer);
   const { user } = useUserContext();
-
-  const addContact = async (contact) => {
-    const payload = await createContact({
-      name: contact.name,
-      note: contact.note,
-      email: user.email,
-    });
-    console.log(payload); //to add a row in supabase
-    dispatch({ type: 'ADD_CONTACT', payload });
-  };
 
   // useEffect(() => {
   //   if (contacts) return;

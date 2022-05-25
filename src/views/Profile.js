@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import ContactForm from '../components/ContactForm';
 import ContactItem from '../components/ContactItem';
-import { useContactContext } from '../context/ContactContext';
 import { personalContacts } from '../hooks/personalContacts';
-import { createContact } from '../services/contacts';
+import { useContacts } from '../hooks/useContacts';
 
 export default function Profile() {
-  const { addContact } = useContactContext();
+  const { addContact, removeContact } = useContacts();
   const contacts = personalContacts();
 
   //Profile should
+  const handleDelete = async (id) => {
+    await removeContact(id);
+  };
 
   if (!contacts) return null;
 
@@ -30,7 +31,12 @@ export default function Profile() {
             <ContactItem key={contact.id} contact={contact} />
             <>
               <button value={contact.id}>Edit</button>
-              <button value={contact.id}>Delete</button>
+              <button
+                value={contact.id}
+                onClick={() => handleDelete(contact.id)}
+              >
+                Delete
+              </button>
             </>
           </>
         ))}
